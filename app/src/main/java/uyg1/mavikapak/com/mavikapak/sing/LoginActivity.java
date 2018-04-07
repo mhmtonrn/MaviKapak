@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import uyg1.mavikapak.com.mavikapak.R;
-import uyg1.mavikapak.com.mavikapak.UserMainActivity;
+import uyg1.mavikapak.com.mavikapak.ui.UserMainActivity;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
