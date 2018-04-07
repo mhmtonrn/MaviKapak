@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "961303845857",
+    "firebase_url": "https://mavikapak-5ffac.firebaseio.com",
+    "project_id": "mavikapak-5ffac",
+    "storage_bucket": "mavikapak-5ffac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961303845857:android:277455b371fce53a",
+        "android_client_info": {
+          "package_name": "uyg1.mavikapak.com.mavikapak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961303845857-4sjm96i574ntimci672f4e2pbd4g47jr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uyg1.mavikapak.com.mavikapak",
+            "certificate_hash": "27e12e705fbfd4c67db7b5d423738ff0ce4cf264"
+          }
+        },
+        {
+          "client_id": "961303845857-1fotp5i7gbha75ar9ubri8jpjiuvf84g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkQlHp3vHjtFsR2d-TH27MOqrFBzrkd8w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961303845857-1fotp5i7gbha75ar9ubri8jpjiuvf84g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
