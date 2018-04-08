@@ -54,6 +54,7 @@ public class UserMainActivity extends AppCompatActivity {
                     ft.replace(R.id.listFragment, new Profil(getApplicationContext())).commit();
                     actionBar.setSubtitle(R.string.profil);
                     return true;
+
                 case R.id.navigation_notifications:
 
                     return true;
