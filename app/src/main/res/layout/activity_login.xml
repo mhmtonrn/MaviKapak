@@ -57,14 +57,11 @@
         android:layout_height="wrap_content"
         android:layout_weight="11">
 
-        <Button
-            android:id="@+id/googlegiris"
-            android:layout_marginTop="10dp"
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_gravity="center_horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:text="Giriş Yap"
-            android:textColor="@color/white" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 

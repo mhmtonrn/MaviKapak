@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "961303845857-b8q5leopfjpe2tehq0iemco1q8jcsopv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uyg1.mavikapak.com.mavikapak",
+            "certificate_hash": "76bc725764377c13aed19bcbeab2ca2de662b552"
+          }
+        },
+        {
           "client_id": "961303845857-4sjm96i574ntimci672f4e2pbd4g47jr.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
