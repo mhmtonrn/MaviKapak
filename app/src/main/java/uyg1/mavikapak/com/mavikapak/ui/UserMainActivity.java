@@ -9,9 +9,12 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import uyg1.mavikapak.com.mavikapak.R;
 import uyg1.mavikapak.com.mavikapak.fragment.AnaSayfa;
 import uyg1.mavikapak.com.mavikapak.fragment.Profil;
+import uyg1.mavikapak.com.mavikapak.util.GPSManager;
 
 public class UserMainActivity extends AppCompatActivity {
 
@@ -33,8 +36,14 @@ public class UserMainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.listFragment, new AnaSayfa(getApplicationContext())).commit();
+        ft.replace(R.id.listFragment, new AnaSayfa(this)).commit();
         actionBar.setSubtitle(R.string.anasayfa);
+
+        //getting current location
+        GPSManager gpsManager = new GPSManager(getApplicationContext());
+        //currentLocation= new LatLng(gpsManager.getLatitude(),gpsManager.getLongitude());
+        Log.d("MyLocation","MyLocation "+gpsManager.getLocation());
+        //end-getting current location
     }
 
 
@@ -49,7 +58,7 @@ public class UserMainActivity extends AppCompatActivity {
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    ft.replace(R.id.listFragment, new AnaSayfa(getApplicationContext())).commit();
+                    ft.replace(R.id.listFragment, new AnaSayfa(UserMainActivity.this)).commit();
                     actionBar.setSubtitle(R.string.anasayfa);
                     return true;
                 case R.id.navigation_dashboard:
