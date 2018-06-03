@@ -7,6 +7,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -34,8 +36,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import uyg1.mavikapak.com.mavikapak.R;
 import uyg1.mavikapak.com.mavikapak.model.LocationModel;
@@ -124,10 +128,26 @@ public class AnaSayfa extends Fragment {
                             if (model.getActive().equals("1")){
                                 LatLng latLng = new LatLng(Double.parseDouble(model.getLatitu()),Double.parseDouble(model.getLongttitu()));
                                 Log.e("Location","Location "+model.toString());
+
+                                List<Address> list1=null;
+                                try {
+                                    Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());;
+                                    list1 = geocoder.getFromLocation(latLng.latitude,latLng.longitude,1);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                String countryName = "Mavi Kapak Noktası";
+                                try{
+                                    countryName = list1.get(0).getCountryName()+list1.get(0).getFeatureName();
+                                }catch (Exception e){
+
+                                }
+
+
                                 Marker marker = googleMap.addMarker(new MarkerOptions()
                                         .position(latLng)
-                                        .title("Mavi Kapak Noktası")
-                                        .snippet(value)
+                                        .title(countryName)
+                                        .snippet(countryName)
                                         .icon(BitmapDescriptorFactory.fromResource(R.mipmap.kapak)));
                                 marker.showInfoWindow();
                             }
@@ -146,13 +166,24 @@ public class AnaSayfa extends Fragment {
                 //end filling the model
 
                 for (LocationModel model:locationModelList ) {
+
                     Log.e("Location2","Location "+model.toString());
                     if (model.active=="1"){
                         LatLng latLng = new LatLng(Double.parseDouble(model.latitu),Double.parseDouble(model.longttitu));
+
+                        List<Address> list1=null;
+                        try {
+                            Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());;
+                            list1 = geocoder.getFromLocation(latLng.latitude,latLng.longitude,1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        String countryName= list1.get(0).getCountryName()+list1.get(0).getFeatureName();
+                        
                         Marker marker = googleMap.addMarker(new MarkerOptions()
                                 .position(latLng)
-                                .title("Mavi Kapak Noktası")
-                                .snippet(value)
+                                .title(countryName)
+                                .snippet(countryName)
                                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.kapak)));
                         marker.showInfoWindow();
                     }

@@ -31,6 +31,8 @@ public class CustomDialogClass extends Dialog implements View.OnClickListener {
     public Marker marker;
     public DatabaseReference myref;
     public String sayi="-1";
+    private DatabaseReference myRefEmail;
+    private String emailSayi="0";
 
     public CustomDialogClass(Activity a, FirebaseUser currentUser, FirebaseDatabase db, Marker marker) {
         super(a);
@@ -53,11 +55,13 @@ public class CustomDialogClass extends Dialog implements View.OnClickListener {
         no.setOnClickListener(this);
 
         myref = db.getReference("Bagis");
+        myRefEmail = db.getReference("EmailBagis");
+
         String markerPosition= marker.getPosition().latitude+""+marker.getPosition().longitude;
         markerPosition=markerPosition.replace(".","_");
-        markerPosition=markerPosition.replace(",","_");
+        markerPosition=markerPosition.replace(",","-");
 
-        myref.child(markerPosition).child(user.getEmail().replace(".","_")).addValueEventListener(new ValueEventListener() {
+        myref.child(markerPosition).addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -67,6 +71,18 @@ public class CustomDialogClass extends Dialog implements View.OnClickListener {
             }
 
 
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        myRefEmail.child(user.getEmail().replace(".","_")).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                emailSayi=dataSnapshot.getValue(String.class);
+            }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -101,7 +117,10 @@ public class CustomDialogClass extends Dialog implements View.OnClickListener {
         myref = db.getReference("Bagis");
         String markerPosition= marker.getPosition().latitude+""+marker.getPosition().longitude;
         markerPosition=markerPosition.replace(".","_");
-        markerPosition=markerPosition.replace(",","_");
+        markerPosition=markerPosition.replace(",","-");
+
+
+
         int say=0;
         if (sayi!=null){
             say=Integer.parseInt(sayi.toString());
@@ -109,6 +128,17 @@ public class CustomDialogClass extends Dialog implements View.OnClickListener {
             say=0;
         }
         int toplam= Integer.parseInt(miktar.getText().toString())+ say;
-        myref.child(markerPosition).child(user.getEmail().replace(".","_")).setValue(String.valueOf(toplam));
+        myref.child(markerPosition).setValue(String.valueOf(toplam));
+
+
+        int emailsayi2=0;
+        if (emailSayi!=null){
+            emailsayi2=Integer.parseInt(miktar.getText().toString());
+        }else{
+            emailsayi2=0;
+        }
+
+        int toplam2=Integer.parseInt(miktar.getText().toString())+ emailsayi2;
+        myRefEmail.child(user.getEmail().replace(".","_")).setValue(String.valueOf(toplam2));
     }
 }

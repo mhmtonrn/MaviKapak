@@ -66,9 +66,7 @@ public class UserMainActivity extends AppCompatActivity {
                     actionBar.setSubtitle(R.string.profil);
                     return true;
 
-                case R.id.navigation_notifications:
 
-                    return true;
             }
             return false;
         }
