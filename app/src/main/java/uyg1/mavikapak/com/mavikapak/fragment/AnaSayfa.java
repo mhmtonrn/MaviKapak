@@ -2,6 +2,7 @@ package uyg1.mavikapak.com.mavikapak.fragment;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -38,6 +39,7 @@ import java.util.List;
 
 import uyg1.mavikapak.com.mavikapak.R;
 import uyg1.mavikapak.com.mavikapak.model.LocationModel;
+import uyg1.mavikapak.com.mavikapak.util.CustomDialogClass;
 import uyg1.mavikapak.com.mavikapak.util.GPSManager;
 
 
@@ -184,7 +186,9 @@ public class AnaSayfa extends Fragment {
                 googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                     @Override
                     public boolean onMarkerClick(Marker marker) {
-                        Toast.makeText(mContext, "bu noktaya rota oluşturacaz", Toast.LENGTH_SHORT).show();
+                        ///Toast.makeText(mContext, "bu noktaya rota oluşturacaz :" +currentUser.getEmail(), Toast.LENGTH_SHORT).show();
+                        CustomDialogClass cdd=new CustomDialogClass((Activity) mContext,currentUser,database,marker);
+                        cdd.show();
                         return false;
                     }
                 });

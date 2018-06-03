@@ -35,6 +35,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
     implementation 'com.github.blennerSilva:AwesomeDialog:2.0.5'
     implementation 'com.google.android.gms:play-services-location:15.0.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
 
 
